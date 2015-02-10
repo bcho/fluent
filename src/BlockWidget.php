@@ -1,5 +1,7 @@
 <?php namespace Flamingo\Fluent;
 
+use Flamingo\Fluent\Contract\Renderable;
+
 /**
  * Block html widget.
  */
@@ -60,7 +62,8 @@ class BlockWidget extends BaseWidget {
      */
     protected function buildSubWidgets(array $subWidgets)
     {
-        return implode('\n', array_map(function($subWidget) {
+        return implode('', array_map(function($subWidget) {
+
             if ($subWidget instanceof Renderable)
             {
                 return $subWidget->render();

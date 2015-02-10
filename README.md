@@ -65,8 +65,6 @@ Should output:
 
 ## TODO
 
-- [x] api refining
-- [ ] tests
 - [ ] more widgets
 
 

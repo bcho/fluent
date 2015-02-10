@@ -112,7 +112,7 @@ class Builder implements Renderable {
      */
     public function render()
     {
-        $widget = $this->makeWidget();
+        $widget = $this->widget();
 
         return $widget->render();
     }
@@ -122,7 +122,7 @@ class Builder implements Renderable {
      *
      * @return \Flamingo\Fluent\Contract\Renderable
      */
-    public function makeWidget()
+    public function widget()
     {
         switch ($this->type) {
         case 'inline':
