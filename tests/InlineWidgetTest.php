@@ -12,7 +12,7 @@ class InlineWidgetTest extends PHPUnit_Framework_TestCase {
             ->param('type', 'text');
 
         $this->assertEquals(
-            '<input name="test" type="text"/>',
+            '<input name="test" type="text" />',
             $w->render()
         );
     }

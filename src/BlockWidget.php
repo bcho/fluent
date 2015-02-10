@@ -51,7 +51,11 @@ class BlockWidget extends BaseWidget {
         $params = $this->getParams();
         $body = $this->getSubWidgets();
 
-        return "<{$tagName} {$params}>{$body}</{$tagName}>";
+        if ($params)
+        {
+            return "<{$tagName} {$params}>{$body}</{$tagName}>";
+        }
+        return "<{$tagName}>{$body}</{$tagName}>";
     }
 
     /**

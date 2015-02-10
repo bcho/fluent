@@ -10,7 +10,12 @@ class InlineWidget extends BaseWidget {
         $tagName = $this->getTagName();
         $params = $this->getParams();
 
-        return "<{$tagName} {$params}/>";
+        if ($params)
+        {
+            return "<{$tagName} {$params} />";
+        }
+
+        return "<{$tagName} />";
     }
 
 }

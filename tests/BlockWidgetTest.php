@@ -28,7 +28,7 @@ class BlockWidgetTest extends PHPUnit_Framework_TestCase {
             ->add($sub->render());
 
         $this->assertEquals(
-            '<article ><section ></section><section ></section></article>',
+            '<article><section></section><section></section></article>',
             $w->render()
         );
     }
