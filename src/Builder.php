@@ -1,18 +1,15 @@
 <?php namespace Flamingo\Fluent;
 
-use FluentForm\Contract\Renderable;
+use InvalidArgumentException;
 
-/**
- * Form builder.
- *
- * @package FluentForm
- */
+use Flamingo\Fluent\Contract\Renderable;
+
 class Builder implements Renderable {
 
     /**
      * Widget instance.
      *
-     * @var \FluentForm\Contract\Renderable
+     * @var \Flamingo\Fluent\Contract\Renderable
      */
     protected $widget;
 
@@ -26,14 +23,14 @@ class Builder implements Renderable {
     protected $type = 'block';
 
     /**
-     * Widget html tag name.
+     * Widget tag name.
      *
      * @var string|null
      */
     protected $tagName = null;
 
     /**
-     * Widget html parameters.
+     * Widget parameters.
      *
      * @var array|null
      */
@@ -115,44 +112,48 @@ class Builder implements Renderable {
      */
     public function render()
     {
-        $widget = $this->buildWidget();
-
-        if (! is_null($this->tagName))
-        {
-            $widget = $widget->withTagName($this->tagName);
-        }
-
-        if (! is_null($this->params))
-        {
-            $widget = $widget->withParams($this->params);
-        }
+        $widget = $this->makeWidget();
 
         return $widget->render();
     }
 
     /**
-     * Build the widget.
+     * Make a widget.
      *
-     * @return \FluentForm\Contract\Renderable
+     * @return \Flamingo\Fluent\Contract\Renderable
      */
-    public function buildWidget()
+    public function makeWidget()
     {
         switch ($this->type) {
         case 'inline':
-            return new InlineWidget();
+            $widget = new InlineWidget();
+            break;
         case 'block':
-            return new BlockWidget();
+            $widget = new BlockWidget();
+            break;
+        default:
+            throw new InvalidArgumentException('Invalid widget type.');
         }
 
-        throw new InvalidArgumentException('Invalid widget type.');
+        if (! is_null($this->tagName))
+        {
+            $widget = $widget->tag($this->tagName);
+        }
+
+        if (! is_null($this->params))
+        {
+            $widget = $widget->params($this->params);
+        }
+
+        return $widget;
     }
     
     /**
-     * Make a builder instance.
+     * Create a builder instance.
      *
-     * @return \FluentForm\Builder
+     * @return \Flamingo\Fluent\Builder
      */
-    public static function make()
+    public static function create()
     {
         return new static();
     }

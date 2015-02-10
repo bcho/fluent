@@ -2,10 +2,8 @@
 
 /**
  * Block html widget.
- *
- * @package FluentForm
  */
-class BlockWidget extends InlineWidget {
+class BlockWidget extends BaseWidget {
 
     /**
      * {@inheritdoc}

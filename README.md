@@ -12,7 +12,7 @@ Building HTML fluently.
 
 use Flamingo\Fluent\Builder;
 
-$form = Builder::make()
+$form = Builder::create()
     ->tag('form')
     ->param('action', '/back/to/the/future')
     ->param('method', 'POST');
@@ -65,7 +65,7 @@ Should output:
 
 ## TODO
 
-- [ ] api refining
+- [x] api refining
 - [ ] tests
 - [ ] more widgets
 
