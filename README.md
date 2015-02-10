@@ -1,5 +1,7 @@
 # Fluent [WIP]
 
+[![Build Status](https://travis-ci.org/bcho/fluent.svg)](https://travis-ci.org/bcho/fluent)
+
 Building HTML fluently.
 
 
