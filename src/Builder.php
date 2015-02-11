@@ -37,6 +37,13 @@ class Builder implements Renderable {
     protected $params = null;
 
     /**
+     * Widget value.
+     *
+     * @var string|null
+     */
+    protected $value = null;
+
+    /**
      * Mark widget as an inline element.
      *
      * @return $this
@@ -106,6 +113,19 @@ class Builder implements Renderable {
     }
 
     /**
+     * Set value.
+     *
+     * @param  string $value
+     * @return $this
+     */
+    public function value($value)
+    {
+        $this->value = $value;
+
+        return $this;
+    }
+
+    /**
      * Render the widget.
      *
      * @return string
@@ -143,6 +163,11 @@ class Builder implements Renderable {
         if (! is_null($this->params))
         {
             $widget = $widget->params($this->params);
+        }
+
+        if (! is_null($this->value))
+        {
+            $widget = $widget->value($this->value);
         }
 
         return $widget;

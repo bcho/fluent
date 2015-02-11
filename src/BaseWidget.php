@@ -94,5 +94,13 @@ abstract class BaseWidget implements Renderable {
     /**
      * {@inheritdoc}
      */
-    abstract function render();
+    abstract public function render();
+
+    /**
+     * Set value.
+     *
+     * @param  string $value
+     * @return $this
+     */
+    abstract public function value($value);
 }

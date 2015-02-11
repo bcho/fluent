@@ -18,4 +18,14 @@ class InlineWidget extends BaseWidget {
         return "<{$tagName} />";
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function value($value)
+    {
+        $this->param('value', $value);
+
+        return $this;
+    }
+
 }

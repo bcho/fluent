@@ -59,6 +59,17 @@ class BlockWidget extends BaseWidget {
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function value($value)
+    {
+        // Just remove all sub widgets.
+        $this->subWidgets = [$value];
+
+        return $this;
+    }
+
+    /**
      * Concat sub widgets.
      *
      * @param  array
